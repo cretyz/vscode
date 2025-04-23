@@ -1,0 +1,20 @@
+name: Update Codespace Prebuild
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 4 * * *" # Every day at 4AM UTC
+
+jobs:
+  prebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Trigger Codespaces Prebuild
+        uses: devcontainers/ci@v0.3
+        with:
+          config-file: .devcontainer/devcontainer.json
+          prebuild: true
