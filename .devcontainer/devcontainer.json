@@ -1,5 +1,10 @@
 {
   "name": "VS Code - OSS Dev",
+  "initializeCommand": "yarn install --immutable",
+  "mounts": [
+    "source=${containerWorkspaceFolder}/.yarn,target=/home/vscode/.cache/yarn,type=bind,consistency=cached",
+    "source=${containerWorkspaceFolder}/node_modules,target=/home/vscode/.cache/node_modules,type=bind,consistency=cached"
+  ],
   "build": {
     "dockerfile": "Dockerfile"
   },
