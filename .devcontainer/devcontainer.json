@@ -1,5 +1,5 @@
 {
-  "name": "Code - OSS (Optimized)",
+  "name": "VS Code - OSS Dev",
   "build": {
     "dockerfile": "Dockerfile"
   },
@@ -13,8 +13,7 @@
     "NODE_OPTIONS": "--max_old_space_size=4096"
   },
   "overrideCommand": false,
-  "mounts": [],
-  "postCreateCommand": "./.devcontainer/post-create.sh",
+  "postCreateCommand": "yarn install && yarn watch",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -24,10 +23,14 @@
         "ms-vscode.vscode-github-issue-notebooks",
         "ms-vscode.vscode-selfhost-test-provider",
         "mutantdino.resourcemonitor"
-      ]
+      ],
+      "settings": {
+        "resmon.show.battery": false,
+        "resmon.show.cpufreq": false
+      }
     }
   },
-  "forwardPorts": [],
+  "forwardPorts": [3000, 9229],
   "hostRequirements": {
     "memory": "6gb"
   }
